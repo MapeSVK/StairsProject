@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="ApplicationService\Impl" />
+      <Folder Include="DomainService" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\StairsAndShit.Core.Entity\StairsAndShit.Core.Entity.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Repositories" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\StairsAndShit.Core.Entity\StairsAndShit.Core.Entity.csproj" />
+      <ProjectReference Include="..\StairsAndShit.Core\StairsAndShit.Core.csproj" />
+    </ItemGroup>
+
+</Project>
