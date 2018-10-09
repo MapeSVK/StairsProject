@@ -5,10 +5,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="ApplicationService\Impl" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\StairsAndShit.Core.Entity\StairsAndShit.Core.Entity.csproj" />
     </ItemGroup>
 

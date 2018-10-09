@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StairsAndShit.Infrastructur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StairsAndShit.RestApi", "StairsAndShit.RestApi\StairsAndShit.RestApi.csproj", "{67468AD6-FE81-4C92-8378-37C1E9503F46}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCore", "TestCore\TestCore.csproj", "{B9221E1D-D944-42CE-B472-A5B380B7B830}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{67468AD6-FE81-4C92-8378-37C1E9503F46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67468AD6-FE81-4C92-8378-37C1E9503F46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67468AD6-FE81-4C92-8378-37C1E9503F46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9221E1D-D944-42CE-B472-A5B380B7B830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9221E1D-D944-42CE-B472-A5B380B7B830}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9221E1D-D944-42CE-B472-A5B380B7B830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9221E1D-D944-42CE-B472-A5B380B7B830}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
