@@ -35,28 +35,82 @@ namespace StairsAndShit.RestApi.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
+	    // get specific pet by id
+	    [HttpGet("{id}")]
+	    public ActionResult<Product> Get(int id)
+	    {
+		    if (id < 1) return BadRequest("Id must be greater then 0");
+		    return _productService.GetProductById(id);
+	    }
 
         // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+	    public ActionResult<Product> Post([FromBody] Product newProduct)
+	    {
+		    if (string.IsNullOrEmpty(newProduct.Name))
+		    {
+			    return BadRequest("Set the product name");
+		    }
+
+		    if (char.ToUpper(newProduct.Type) != 'N' || char.ToUpper(newProduct.Type) != 'O' || 
+		        char.ToUpper(newProduct.Type) != 'S')
+		    {
+			    return BadRequest("You need to set type of product which can be 'N' (New)," +
+			                      "'O' (Normal), or 'S' (Sale) ");
+		    }
+		    if (string.IsNullOrEmpty(newProduct.Desc))
+		    {
+			    return BadRequest("Write description of the product");
+		    }
+		    if (!double.IsNegative(newProduct.Price) == true)
+		    {
+			    return BadRequest("set price of the product. Price cannot be negative");
+		    }
+
+		    return _productService.CreateProduct(newProduct);
+	    }
 
         // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
+	    [HttpPut("{id}")]
+	    public ActionResult<Product> Put(int id, [FromBody] Product product)
+	    {
+	        if (id < 1 || id != product.Id)
+	        {
+		        return BadRequest("The ID of the pet is not correct!");
+	        }
+		    if (string.IsNullOrEmpty(product.Name))
+		    {
+			    return BadRequest("Set the product name");
+		    }
+
+		    if (char.ToUpper(product.Type) != 'N' || char.ToUpper(product.Type) != 'O' || 
+		        char.ToUpper(product.Type) != 'S')
+		    {
+			    return BadRequest("You need to set type of product which can be 'N' (New)," +
+			                      "'O' (Normal), or 'S' (Sale) ");
+		    }
+		    if (string.IsNullOrEmpty(product.Desc))
+		    {
+			    return BadRequest("Write description of the product");
+		    }
+		    if (!double.IsNegative(product.Price) == true)
+		    {
+			    return BadRequest("set price of the product. Price cannot be negative");
+		    }
+	        return Ok(_productService.UpdateProduct(product));
         }
 
         // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+	    [HttpDelete("{id}")]
+	    public ActionResult<Product> Delete(int id)
+	    {
+		    var product = _productService.DeleteProduct(id);
+		
+		    if (product == null)
+		    {
+			    return StatusCode(404, "Could not find a product with this ID: " + id);
+		    }
+
+		    return Ok($"Product with Id: {id} is deleted");
+	    }
     }
 }
