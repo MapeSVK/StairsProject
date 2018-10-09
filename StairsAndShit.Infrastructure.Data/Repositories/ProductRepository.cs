@@ -24,12 +24,18 @@ namespace StairsAndShit.Infrastructure.Data
 
 		public Product RemoveProduct(int id)
 		{
-			throw new System.NotImplementedException();
+			var removed = _stairsAppContext.Remove(new Product {Id = id}).Entity;
+			_stairsAppContext.SaveChanges();
+            return removed;
 		}
-
+		
+		
 		public Product UpdateProduct(Product updatedProduct)
 		{
-			throw new System.NotImplementedException();
+			_stairsAppContext.Attach(updatedProduct).State = EntityState.Modified;
+			//_stairsAppContext.Entry(updatedProduct).Reference(p => p.Owner).IsModified = true;
+			_stairsAppContext.SaveChanges();
+			return updatedProduct;
 		}
 
 		
@@ -47,7 +53,7 @@ namespace StairsAndShit.Infrastructure.Data
 		}
 		
 
-		// counts how many products we have
+		// counts how many products in DbSet we have
 		public int Count()
 		{
 			return _stairsAppContext.Products.Count();
