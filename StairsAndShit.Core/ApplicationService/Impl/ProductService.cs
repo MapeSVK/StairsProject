@@ -55,8 +55,8 @@ namespace StairsAndShit.Core.ApplicationService.Impl
 	    {
 		    throw new System.NotImplementedException();
 	    }
-
-	    /*public List<Product> GetFilteredProducts(Filter filter)
+	    
+	    public List<Product> ReadAllProducts(Filter filter)
 	    {
 		    if (filter.CurrentPage < 0 || filter.ItemsPrPage < 0)
 		    {
@@ -68,6 +68,6 @@ namespace StairsAndShit.Core.ApplicationService.Impl
 		    }
 			
 		    return _productRepository.ReadAllProducts(filter).ToList();
-	    }*/
+	    }
     }
 }

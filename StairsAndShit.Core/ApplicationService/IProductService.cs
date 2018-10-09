@@ -19,6 +19,7 @@ namespace StairsAndShit.Core.ApplicationService
         Product DeleteProduct(int id);
 	    
 	    // get all products after filter 
-	   // List<Product> GetFilteredProducts(Filter filter);
+	    List<Product> ReadAllProducts(Filter filter);
+
     }
 }

@@ -20,12 +20,13 @@ namespace StairsAndShit.RestApi.Controllers
 	    }
 
 	    // GET api/values
+	    // get all filtered products with paging and ordered by name
         [HttpGet]
         public ActionResult<IEnumerable<Product>> Get([FromQuery] Filter filter)
         {
 	        try
 	        {
-				return Ok(_productService.GetFilteredProducts(filter));
+				return Ok(_productService.ReadAllProducts(filter));
 	        }
 	        catch (Exception e)
 	        {
