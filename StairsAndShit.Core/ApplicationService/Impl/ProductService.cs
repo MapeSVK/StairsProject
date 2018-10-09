@@ -26,6 +26,10 @@ namespace StairsAndShit.Core.ApplicationService.Impl
 		    {
 			    throw new InvalidDataException("You need to specify products description");
 		    }
+		    if (newProduct.Price <0.1)
+		    {
+			    throw new InvalidDataException("Price cannot be smaller than 0.1");
+		    }
 		    
 		    var createdProduct =_productRepository.Create(newProduct);
 		    
@@ -41,19 +45,40 @@ namespace StairsAndShit.Core.ApplicationService.Impl
 		    return _productRepository.GetProductById(id);
 	    }
 
-	    public List<Product> GetAllProducts()
-	    {
-		    throw new System.NotImplementedException();
-	    }
-
 	    public Product UpdateProduct(Product productUpdate)
 	    {
-		    throw new System.NotImplementedException();
+		    if (productUpdate.Id<1)
+		    {
+			    throw new InvalidDataException("Id cannot be smaller than 1");
+		    }
+		    if (productUpdate.Name == null)
+		    {
+			    throw new InvalidDataException("You need to specify products name");
+		    }
+		    if (productUpdate.Desc == null)
+		    {
+			    throw new InvalidDataException("You need to specify products description");
+		    }
+		    if (productUpdate.Price <0.1)
+		    {
+			    throw new InvalidDataException("Price cannot be smaller than 0.1");
+		    }
+
+		    var updatedProduct = _productRepository.UpdateProduct(productUpdate);
+
+		    return updatedProduct;
 	    }
 
 	    public Product DeleteProduct(int id)
 	    {
-		    throw new System.NotImplementedException();
+		    if (id<1)
+		    {
+			    throw new InvalidDataException("Id cannot be smaller than 1");
+		    }
+		    
+		    var deletedProuct = _productRepository.RemoveProduct(id);
+		    
+		    return deletedProuct;
 	    }
 	    
 	    public List<Product> ReadAllProducts(Filter filter)

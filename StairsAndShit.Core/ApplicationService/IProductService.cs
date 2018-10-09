@@ -10,7 +10,6 @@ namespace StairsAndShit.Core.ApplicationService
         
         //Read //GET
         Product GetProductById(int id);
-        List<Product> GetAllProducts();
 
         //Update //PUT
         Product UpdateProduct(Product productUpdate);
