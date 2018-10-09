@@ -3,18 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using StairsAndShit.Core.ApplicationService;
+using StairsAndShit.Core.Entity;
 
 namespace StairsAndShit.RestApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class ProductsController : ControllerBase
     {
-        // GET api/values
+	    private readonly IProductService _productService;
+
+	    public ProductsController(IProductService productService)
+	    {
+		    _productService = productService;
+	    }
+
+	    // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<Product>> Get([FromQuery] Filter filter)
         {
-            return new string[] {"value1", "value2"};
+	        try
+	        {
+				return Ok(_productService.GetFilteredProducts(filter));
+	        }
+	        catch (Exception e)
+	        {
+		        return BadRequest(e.Message);
+	        }
         }
 
         // GET api/values/5

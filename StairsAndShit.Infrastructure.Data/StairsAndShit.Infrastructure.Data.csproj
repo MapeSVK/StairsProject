@@ -5,12 +5,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Repositories" />
+      <ProjectReference Include="..\StairsAndShit.Core.Entity\StairsAndShit.Core.Entity.csproj" />
+      <ProjectReference Include="..\StairsAndShit.Core\StairsAndShit.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\StairsAndShit.Core.Entity\StairsAndShit.Core.Entity.csproj" />
-      <ProjectReference Include="..\StairsAndShit.Core\StairsAndShit.Core.csproj" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.4" />
     </ItemGroup>
 
 </Project>
