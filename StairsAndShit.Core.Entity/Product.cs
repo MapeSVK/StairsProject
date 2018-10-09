@@ -10,6 +10,6 @@ namespace StairsAndShit.Core.Entity
         public double Price { get; set; }
         public char Type { get; set; }
         
-        public List<OrderLine> OrderLines { get; set; }
+      
     }
 }

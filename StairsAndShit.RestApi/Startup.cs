@@ -52,10 +52,10 @@ namespace StairsAndShit.RestApi
 			        opt => opt.UseSqlServer(_conf.GetConnectionString("DefaultConnection")));
 	        }
 			
-	        services.AddScoped<IOrderRepository, OrderRepository>();
+	      
 	        services.AddScoped<IProductRepository, ProductRepository>();
 	        //services.AddScoped<IProductService, ProductService>();
-	        //services.AddScoped<IOrderService, OrderService>();
+	        
 
 	        services.AddMvc().AddJsonOptions(options => {
 		        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
