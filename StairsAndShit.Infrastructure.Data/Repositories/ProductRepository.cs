@@ -58,7 +58,6 @@ namespace StairsAndShit.Infrastructure.Data
 		{
 			return _stairsAppContext.Products.Count();
 		}
-
 		
 		/*
 			Read all products and filter (set how many per page)

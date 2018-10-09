@@ -6,7 +6,7 @@ using StairsAndShit.Core.Entity;
 
 namespace StairsAndShit.Core.ApplicationService.Impl
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
 	    readonly IProductRepository _productRepository;
 
@@ -15,8 +15,47 @@ namespace StairsAndShit.Core.ApplicationService.Impl
 		    _productRepository = productRepository;
 	    }
 	    
-	    
 	    // get products after filter applied
+	    public Product CreateProduct(Product newProduct)
+	    {
+		    if (newProduct.Name == null)
+		    {
+			    throw new InvalidDataException("You need to specify products name");
+		    }
+		    if (newProduct.Desc == null)
+		    {
+			    throw new InvalidDataException("You need to specify products description");
+		    }
+		    
+		    var createdProduct =_productRepository.Create(newProduct);
+		    
+		    return createdProduct;
+	    }
+
+	    public Product GetProductById(int id)
+	    {
+		    if (id<1)
+		    {
+			    throw new InvalidDataException("Id cannot be smaller than 1"); 
+		    }
+		    return _productRepository.GetProductById(id);
+	    }
+
+	    public List<Product> GetAllProducts()
+	    {
+		    throw new System.NotImplementedException();
+	    }
+
+	    public Product UpdateProduct(Product productUpdate)
+	    {
+		    throw new System.NotImplementedException();
+	    }
+
+	    public Product DeleteProduct(int id)
+	    {
+		    throw new System.NotImplementedException();
+	    }
+	    
 	    public List<Product> ReadAllProducts(Filter filter)
 	    {
 		    if (filter.CurrentPage < 0 || filter.ItemsPrPage < 0)

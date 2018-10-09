@@ -20,5 +20,6 @@ namespace StairsAndShit.Core.ApplicationService
 	    
 	    // get all products after filter 
 	    List<Product> ReadAllProducts(Filter filter);
+
     }
 }
