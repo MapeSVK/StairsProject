@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace StairsAndShit.Core.Entity
 {
@@ -7,5 +8,7 @@ namespace StairsAndShit.Core.Entity
         public int Id { get; set; }
         public DateTime OrderDate { get; set; }
         public double FinalPrice { get; set; }
+        
+        public List<OrderLine> OrderLines { get; set; }
     }
 }

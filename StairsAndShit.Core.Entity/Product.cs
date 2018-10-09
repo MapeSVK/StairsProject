@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace StairsAndShit.Core.Entity
 {
     public class Product
@@ -7,5 +9,7 @@ namespace StairsAndShit.Core.Entity
         public string Desc { get; set; }
         public double Price { get; set; }
         public char Type { get; set; }
+        
+        public List<OrderLine> OrderLines { get; set; }
     }
 }

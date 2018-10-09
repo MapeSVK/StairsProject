@@ -6,7 +6,6 @@
 
     <ItemGroup>
       <Folder Include="ApplicationService\Impl" />
-      <Folder Include="DomainService" />
     </ItemGroup>
 
     <ItemGroup>
