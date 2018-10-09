@@ -17,10 +17,4 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0-preview2-35157" />
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\StairsAndShit.Core.Entity\StairsAndShit.Core.Entity.csproj" />
-      <ProjectReference Include="..\StairsAndShit.Core\StairsAndShit.Core.csproj" />
-      <ProjectReference Include="..\StairsAndShit.Infrastructure.Data\StairsAndShit.Infrastructure.Data.csproj" />
-    </ItemGroup>
-
 </Project>

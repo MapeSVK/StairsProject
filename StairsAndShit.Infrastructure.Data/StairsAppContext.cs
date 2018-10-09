@@ -5,9 +5,10 @@ namespace StairsAndShit.Infrastructure.Data
 {
 	public class StairsAppContext : DbContext
 	{
-		public StairsAppContext(DbContextOptions<StairsAppContext> opt) 
-			: base(opt) { }
-
+		public StairsAppContext(DbContextOptions<StairsAppContext> opt)
+			: base(opt)
+		{		
+		}
 		
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{

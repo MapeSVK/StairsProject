@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using StairsAndShit.Core.ApplicationService;
 using StairsAndShit.Core.ApplicationService.Impl;
 using StairsAndShit.Core.DomainService;
+using StairsAndShit.Core.Entity;
 using StairsAndShit.Infrastructure.Data;
 
 namespace StairsAndShit.RestApi
@@ -36,32 +37,34 @@ namespace StairsAndShit.RestApi
 		    _conf = builder.Build();
 	    }
 	    
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+	        
 	        if (_env.IsDevelopment())
-	        {
-		        Console.WriteLine("Data could not be obtained from Database. App is running on Development mode." +
-		                          "Look at the Startup file");
+	        {		        
+		        services.AddDbContext<StairsAppContext>(
+			        opt => opt.UseSqlite("Data Source=customerApp.db"));
 	        }
 
 	        else if (_env.IsProduction())
 	        {
 		        services.AddDbContext<StairsAppContext>(
-			        opt => opt.UseSqlServer(_conf.GetConnectionString("DefaultConnection")));
+			        opt => opt
+				        .UseSqlServer(_conf.GetConnectionString("DefaultConnection")));
 	        }
-			
-	      
+			   
 	        services.AddScoped<IProductRepository, ProductRepository>();
-	        //services.AddScoped<IProductService, ProductService>();
-	        
-
-	        services.AddMvc().AddJsonOptions(options => {
-		        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-	        });
+	        services.AddScoped<IProductService, ProductService>();
 			
 	        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+	        
+	        /*services.AddCors(options =>
+	        {
+		        options.AddPolicy("AllowSpecificOrigin",
+			        builder => builder.WithOrigins("http://localhost:63342").AllowAnyHeader()
+				        .AllowAnyMethod());
+	        });*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,9 +72,13 @@ namespace StairsAndShit.RestApi
         {
             if (env.IsDevelopment())
             {
-				Console.WriteLine("Data could not be obtained from Database. App is running on Development mode." +
-				                  "Look at the Startup file");
-                app.UseDeveloperExceptionPage();
+	            app.UseDeveloperExceptionPage();
+	            using (var scope = app.ApplicationServices.CreateScope())
+	            {
+		            var ctx = scope.ServiceProvider.GetService<StairsAppContext>();
+		            ctx.Database.EnsureDeleted();
+		            ctx.Database.EnsureCreated();
+	            }
             }
             else
             {

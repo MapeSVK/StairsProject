@@ -22,7 +22,7 @@ namespace StairsAndShit.Core.DomainService
 	    int Count();
 	    
 	    // read all products
-	    IEnumerable<Product> ReadAllProducts(Filter filter = null);
+	    IEnumerable<Product> ReadAllProducts(Filter filter= null);
 	    
 	 
 

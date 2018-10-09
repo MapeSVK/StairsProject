@@ -15,7 +15,6 @@ namespace StairsAndShit.Core.ApplicationService.Impl
 		    _productRepository = productRepository;
 	    }
 	    
-	    // get products after filter applied
 	    public Product CreateProduct(Product newProduct)
 	    {
 		    if (newProduct.Name == null)
@@ -91,7 +90,7 @@ namespace StairsAndShit.Core.ApplicationService.Impl
 		    {
 			    throw new InvalidDataException("Index out bounds, CurrentPage is to high");
 		    }
-			
+
 		    return _productRepository.ReadAllProducts(filter).ToList();
 	    }
     }
