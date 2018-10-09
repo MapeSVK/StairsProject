@@ -17,7 +17,7 @@ namespace StairsAndShit.Core.ApplicationService.Impl
 	    
 	    
 	    // get products after filter applied
-	    public List<Product> GetFilteredProducts(Filter filter)
+	    public List<Product> ReadAllProducts(Filter filter)
 	    {
 		    if (filter.CurrentPage < 0 || filter.ItemsPrPage < 0)
 		    {
