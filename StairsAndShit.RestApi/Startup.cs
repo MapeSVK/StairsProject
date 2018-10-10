@@ -54,7 +54,7 @@ namespace StairsAndShit.RestApi
 			
 	      
 	        services.AddScoped<IProductRepository, ProductRepository>();
-	        //services.AddScoped<IProductService, ProductService>();
+	        services.AddScoped<IProductService, ProductService>();
 	        
 
 	        services.AddMvc().AddJsonOptions(options => {
