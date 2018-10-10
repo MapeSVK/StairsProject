@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using StairsAndShit.Core.DomainService;
 using StairsAndShit.Core.Entity;
@@ -28,18 +29,14 @@ namespace StairsAndShit.Infrastructure.Data
 			_stairsAppContext.SaveChanges();
             return removed;
 		}
-		
-		
+			
 		public Product UpdateProduct(Product updatedProduct)
 		{
 			_stairsAppContext.Attach(updatedProduct).State = EntityState.Modified;
-			//_stairsAppContext.Entry(updatedProduct).Reference(p => p.Owner).IsModified = true;
 			_stairsAppContext.SaveChanges();
 			return updatedProduct;
 		}
-
 		
-		// returns Product with id specified in API
 		public Product GetProductById(int id)
 		{
 			foreach (var Product in _stairsAppContext.Products)
@@ -52,28 +49,21 @@ namespace StairsAndShit.Infrastructure.Data
 			return null;		
 		}
 		
-
-		// counts how many products in DbSet we have
 		public int Count()
 		{
 			return _stairsAppContext.Products.Count();
 		}
-		
-		/*
-			Read all products and filter (set how many per page)
-			Order products by name
-		*/
+
 		public IEnumerable<Product> ReadAllProducts(Filter filter)
 		{
-			if (filter == null)
+			if (filter.ItemsPrPage > 0&& filter.CurrentPage>0)
 			{
-				return _stairsAppContext.Products;
+				return _stairsAppContext.Products
+					.Skip((filter.CurrentPage - 1) * filter.ItemsPrPage)
+					.Take(filter.ItemsPrPage)
+					.OrderBy(p => p.Name);				
 			}
-
-			return _stairsAppContext.Products
-				.Skip((filter.CurrentPage - 1) * filter.ItemsPrPage)
-				.Take(filter.ItemsPrPage)
-				.OrderBy(p => p.Name);
+			return _stairsAppContext.Products;					
 		}
 	}
 }
