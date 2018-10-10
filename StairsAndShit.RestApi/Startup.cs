@@ -56,14 +56,11 @@ namespace StairsAndShit.RestApi
 			   
 	        services.AddScoped<IProductRepository, ProductRepository>();
 	        services.AddScoped<IProductService, ProductService>();
-<<<<<<< HEAD
 	        
 
 	        services.AddMvc().AddJsonOptions(options => {
 		        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 	        });
-=======
->>>>>>> d7d4ea7664cbb651568239d3c7d69c5b06fce1b5
 			
 	        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 	        
