@@ -231,7 +231,6 @@ namespace TestCore.ApplicationService.Impl
             Exception ex = Assert.Throws<InvalidDataException>(() => 
                 testedClas.DeleteProduct(product.Id));
             Assert.Equal("Id cannot be smaller than 1", ex.Message);  
-           
         }
         
         [Fact]
@@ -249,6 +248,60 @@ namespace TestCore.ApplicationService.Impl
             testedClas.DeleteProduct(product.Id);
             
             dataSource.Verify(m => m.RemoveProduct(It.IsAny<int>()), Times.Once); 
+        }
+        
+        [Fact]
+        public void ReadAllProducts_CurrentPageSmallerThan_InvalidDataException()
+        {
+            var dataSource = new Mock<IProductRepository>();
+            var filter = new Filter()
+            {
+               CurrentPage = -1,
+                ItemsPrPage = 5
+            };          
+            dataSource.Setup(m => m.ReadAllProducts(It.IsAny<Filter>()));
+            
+            var testedClas = new ProductService(dataSource.Object);
+
+            Exception ex = Assert.Throws<InvalidDataException>(() => 
+                testedClas.ReadAllProducts(filter));
+            Assert.Equal("CurrentPage and ItemsPage Must zero or more", ex.Message);     
+        }
+        
+        [Fact]
+        public void ReadAllProducts_ItemPrPageSmallerThan_InvalidDataException()
+        {
+            var dataSource = new Mock<IProductRepository>();
+            var filter = new Filter()
+            {
+                CurrentPage = 4,
+                ItemsPrPage = -6
+            };          
+            dataSource.Setup(m => m.ReadAllProducts(It.IsAny<Filter>()));
+            
+            var testedClas = new ProductService(dataSource.Object);
+
+            Exception ex = Assert.Throws<InvalidDataException>(() => 
+                testedClas.ReadAllProducts(filter));
+            Assert.Equal("CurrentPage and ItemsPage Must zero or more", ex.Message);     
+        }
+        
+        [Fact]
+        public void ReadAllProducts_CurrentPageTooHigh_InvalidDataException()
+        {
+            var dataSource = new Mock<IProductRepository>();
+            var filter = new Filter()
+            {
+                CurrentPage = 5,
+                ItemsPrPage = 3
+            };          
+            dataSource.Setup(m => m.ReadAllProducts(It.IsAny<Filter>()));
+            
+            var testedClas = new ProductService(dataSource.Object);
+
+            Exception ex = Assert.Throws<InvalidDataException>(() => 
+                testedClas.ReadAllProducts(filter));
+            Assert.Equal("Index out bounds, CurrentPage is to high", ex.Message);     
         }
     }
 }
