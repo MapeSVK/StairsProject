@@ -85,7 +85,7 @@ namespace StairsAndShit.RestApi
 		            ctx.Database.EnsureCreated();
 	            }
             }
-            else
+            else 
             {
 	            using (var scope = app.ApplicationServices.CreateScope())
 	            {
