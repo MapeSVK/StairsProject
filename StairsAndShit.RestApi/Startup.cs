@@ -59,12 +59,12 @@ namespace StairsAndShit.RestApi
 			
 	        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 	        
-	        services.AddCors(options =>
+	        /*services.AddCors(options =>
 	        {
 		        options.AddPolicy("AllowSpecificOrigin",
-			        builder => builder.WithOrigins("http://example.com").AllowAnyHeader()
+			        builder => builder.WithOrigins("http://exam.com").AllowAnyHeader()
 				        .AllowAnyMethod());
-	        });
+	        });*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
