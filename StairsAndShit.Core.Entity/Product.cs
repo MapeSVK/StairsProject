@@ -9,7 +9,7 @@ namespace StairsAndShit.Core.Entity
         public string Desc { get; set; }
         public float Price { get; set; }
         public char Type { get; set; }
-	    //public string ImageLink { get; set; }
+	    public string ImageLink { get; set; }
         
       
     }
