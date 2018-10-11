@@ -29,7 +29,12 @@ namespace StairsAndShit.Core.ApplicationService.Impl
 		    {
 			    throw new InvalidDataException("Price cannot be smaller than 0.1");
 		    }
-		    
+
+		    if (newProduct.ImageLink == null)
+		    {
+			    throw new InvalidDataException("Specify URL of the image you want to import");
+		    }
+
 		    var createdProduct =_productRepository.Create(newProduct);
 		    
 		    return createdProduct;
@@ -62,6 +67,11 @@ namespace StairsAndShit.Core.ApplicationService.Impl
 		    {
 			    throw new InvalidDataException("Price cannot be smaller than 0.1");
 		    }
+		    if (productUpdate.ImageLink == null)
+		    {
+			    throw new InvalidDataException("You need to specify URL of the image you want to add");
+		    }
+		    
 
 		    var updatedProduct = _productRepository.UpdateProduct(productUpdate);
 
