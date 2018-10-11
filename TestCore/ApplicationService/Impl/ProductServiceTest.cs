@@ -76,7 +76,8 @@ namespace TestCore.ApplicationService.Impl
                 Name = "name",
                 Desc = "desc",
                 Price = 5,
-                Type = 'n'
+                Type = 'n',
+	            ImageLink = "asdas"
                 
             };          
            dataSource.Setup(m => m.Create(It.IsAny<Product>())).Returns(product);
@@ -132,7 +133,8 @@ namespace TestCore.ApplicationService.Impl
                 Id = 1,
                 Name = "name",
                 Desc = "desc",
-                Price = 5
+                Price = 5,
+	            ImageLink = "url"
                 
             };          
             dataSource.Setup(m => m.UpdateProduct(It.IsAny<Product>())).Returns(product);
