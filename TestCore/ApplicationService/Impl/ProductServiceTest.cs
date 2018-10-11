@@ -171,6 +171,7 @@ namespace TestCore.ApplicationService.Impl
             {
                 Id = 1,
                 Name = "name"
+	            
             };          
             dataSource.Setup(m => m.UpdateProduct(It.IsAny<Product>())).Returns(product);
 
