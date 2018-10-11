@@ -161,6 +161,7 @@ namespace TestCore.ApplicationService.Impl
             Exception ex = Assert.Throws<InvalidDataException>(() => 
                 testedClas.UpdateProduct(product));
             Assert.Equal("You need to specify products name", ex.Message);  
+	        
         }
         
         [Fact]
