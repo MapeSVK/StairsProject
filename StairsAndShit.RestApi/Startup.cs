@@ -67,8 +67,8 @@ namespace StairsAndShit.RestApi
 	        services.AddCors(options =>
 	        {
 		        options.AddPolicy("AllowSpecificOrigin",
-			        builder => builder.AllowAnyOrigin().AllowAnyHeader()
-				        .AllowAnyMethod());
+			        builder => builder.WithOrigins("http://example.com")
+				        .AllowAnyHeader());
 	        });
         }
 
