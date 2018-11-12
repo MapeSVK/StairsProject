@@ -10,4 +10,8 @@
       </Reference>
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.3.0" />
+    </ItemGroup>
+
 </Project>
