@@ -64,7 +64,7 @@ namespace StairsAndShit.RestApi
 	        if (_env.IsDevelopment())
 	        {		        
 		        services.AddDbContext<StairsAppContext>(
-			        opt => opt.UseSqlite("Data Source=customerApp.db"));
+			        opt => opt.UseSqlite("Data Source= stairsDB.db"));
 	        }
 
 	        else if (_env.IsProduction())
@@ -89,8 +89,9 @@ namespace StairsAndShit.RestApi
 	        services.AddCors(options =>
 	        {
 		        options.AddPolicy("AllowSpecificOrigin",
-			        builder => builder.AllowAnyOrigin().AllowAnyHeader()
-				        .AllowAnyMethod());
+			        builder => builder
+				        .WithOrigins("https://stairsprojectangular.firebaseapp.com").AllowAnyHeader().AllowAnyMethod()
+			        );
 	        });
         }
 
@@ -118,7 +119,7 @@ namespace StairsAndShit.RestApi
             }
 
 	        /* USAGE - Calling */
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 	        app.UseCors("AllowSpecificOrigin");
             app.UseMvc();
 	        
