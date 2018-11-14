@@ -44,7 +44,7 @@ namespace StairsAndShit.RestApi
 	        if (_env.IsDevelopment())
 	        {		        
 		        services.AddDbContext<StairsAppContext>(
-			        opt => opt.UseSqlite("Data Source=customerApp.db"));
+			        opt => opt.UseSqlite("Data Source=stairsDB.db"));
 	        }
 
 	        else if (_env.IsProduction())
@@ -95,7 +95,15 @@ namespace StairsAndShit.RestApi
 	            app.UseHsts();
             }
 
+<<<<<<< HEAD
+=======
+
+	        /* USAGE - Calling */
+
+            //app.UseHttpsRedirection();
+>>>>>>> develop
             app.UseHttpsRedirection();
+
 	        app.UseCors("AllowSpecificOrigin");
             app.UseMvc();
         }
