@@ -17,9 +17,6 @@ using StairsAndShit.Core.ApplicationService.Impl;
 using StairsAndShit.Core.DomainService;
 using StairsAndShit.Core.Entity;
 using StairsAndShit.Infrastructure.Data;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-
 
 namespace StairsAndShit.RestApi
 {
@@ -38,28 +35,11 @@ namespace StairsAndShit.RestApi
 			    .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
 			    .AddEnvironmentVariables();
 		    _conf = builder.Build();
-		    
-		    // jwt security for authentication
-		    JwtSecurityKey.SetSecret("My secret key");
 	    }
 	    
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-	        
-	        // JWT AUTHENTICATION
-	        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-	        {
-		        options.TokenValidationParameters = new TokenValidationParameters
-		        {
-			        ValidateAudience = false,
-			        ValidateIssuer = false,
-			        ValidateIssuerSigningKey = true,
-			        IssuerSigningKey = JwtSecurityKey.Key,
-			        ValidateLifetime = true, //validate the expiration and not before values in the token
-			        ClockSkew = TimeSpan.FromMinutes(5) //5 minute tolerance for the expiration date
-		        };
-	        });
 	        
 	        if (_env.IsDevelopment())
 	        {		        
@@ -76,8 +56,6 @@ namespace StairsAndShit.RestApi
 			   
 	        services.AddScoped<IProductRepository, ProductRepository>();
 	        services.AddScoped<IProductService, ProductService>();
-	        services.AddScoped<IUserRepository<User>, UserRepository>();
-	        
 	        
 
 	        services.AddMvc().AddJsonOptions(options => {
@@ -118,13 +96,14 @@ namespace StairsAndShit.RestApi
 	            app.UseHsts();
             }
 
+<<<<<<< HEAD
 	        /* USAGE - Calling */
             //app.UseHttpsRedirection();
+=======
+            app.UseHttpsRedirection();
+>>>>>>> parent of 1f6b6d5... authentication for backend using token system
 	        app.UseCors("AllowSpecificOrigin");
             app.UseMvc();
-	        
-	        // Use authentication
-	        app.UseAuthentication();
         }
     }
 }
