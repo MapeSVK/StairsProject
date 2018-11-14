@@ -95,13 +95,9 @@ namespace StairsAndShit.RestApi
 	            app.UseHsts();
             }
 
-<<<<<<< HEAD
-=======
-
 	        /* USAGE - Calling */
 
             //app.UseHttpsRedirection();
->>>>>>> develop
             app.UseHttpsRedirection();
 
 	        app.UseCors("AllowSpecificOrigin");
