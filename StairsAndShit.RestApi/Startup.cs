@@ -98,10 +98,14 @@ namespace StairsAndShit.RestApi
 <<<<<<< HEAD
 	        /* USAGE - Calling */
 <<<<<<< HEAD
+<<<<<<< HEAD
             //app.UseHttpsRedirection();
 =======
             app.UseHttpsRedirection();
 >>>>>>> parent of 1f6b6d5... authentication for backend using token system
+=======
+            app.UseHttpsRedirection();
+>>>>>>> parent of 1131707... firebase deploy - CORS changed
 =======
             app.UseHttpsRedirection();
 >>>>>>> parent of 1131707... firebase deploy - CORS changed
