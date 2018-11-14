@@ -24,8 +24,8 @@ namespace StairsAndShit.Infrastructure.Data
 
             List<Product> items = new List<Product>
             {
-                new Product() { Name = "stairs1", Desc = "desc1", Price = 7, Type = 'O', ImageLink = "image"},
-                new Product() { Name = "stairs2", Desc = "desc2", Price = 8, Type = 'O', ImageLink = "image" }
+                new Product() { Name = "stairs1", Desc = "desc1", Price = 7, Id = 1, Type = 'O', ImageLink = "image"},
+                new Product() { Name = "stairs2", Desc = "desc2", Price = 8, Id = 2, Type = 'O', ImageLink = "image" }
             };
 
             // Create two users with hashed and salted passwords

@@ -10,7 +10,7 @@ using StairsAndShit.Core.Entity;
 
 namespace StairsAndShit.RestApi.Controllers
 {
-	[Route("api/[controller]")]
+	[Route("/token")]
 	public class TokenController : Controller
 	{
 		private readonly IUserRepository<User> repository;

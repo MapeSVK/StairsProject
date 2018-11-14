@@ -44,7 +44,7 @@ namespace StairsAndShit.RestApi
 	        if (_env.IsDevelopment())
 	        {		        
 		        services.AddDbContext<StairsAppContext>(
-			        opt => opt.UseSqlite("Data Source= stairsDB.db"));
+			        opt => opt.UseSqlite("Data Source=customerApp.db"));
 	        }
 
 	        else if (_env.IsProduction())
@@ -67,9 +67,8 @@ namespace StairsAndShit.RestApi
 	        services.AddCors(options =>
 	        {
 		        options.AddPolicy("AllowSpecificOrigin",
-			        builder => builder
-				        .WithOrigins("https://stairsprojectangular.firebaseapp.com").AllowAnyHeader().AllowAnyMethod()
-			        );
+			        builder => builder.AllowAnyOrigin().AllowAnyHeader()
+				        .AllowAnyMethod());
 	        });
         }
 
@@ -98,10 +97,14 @@ namespace StairsAndShit.RestApi
 
 <<<<<<< HEAD
 	        /* USAGE - Calling */
+<<<<<<< HEAD
             //app.UseHttpsRedirection();
 =======
             app.UseHttpsRedirection();
 >>>>>>> parent of 1f6b6d5... authentication for backend using token system
+=======
+            app.UseHttpsRedirection();
+>>>>>>> parent of 1131707... firebase deploy - CORS changed
 	        app.UseCors("AllowSpecificOrigin");
             app.UseMvc();
         }
