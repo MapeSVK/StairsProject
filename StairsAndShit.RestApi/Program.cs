@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using StairsAndShit.Infrastructure.Data;
 
 namespace StairsAndShit.RestApi
 {
@@ -16,19 +14,7 @@ namespace StairsAndShit.RestApi
     {
         public static void Main(string[] args)
         {
-	        // Build host
-	        var host = CreateWebHostBuilder(args).Build();
-
-	        // Initialize the database
-	        using (var scope = host.Services.CreateScope())
-	        {
-		        var services = scope.ServiceProvider;
-		        var dbContext = services.GetService<StairsAppContext>();
-		        DBInitializer.DbInitializer.Initialize(dbContext);
-	        }
-
-	        // Run host
-	        host.Run();
+            CreateWebHostBuilder(args).Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
