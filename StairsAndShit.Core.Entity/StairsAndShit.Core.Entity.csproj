@@ -4,10 +4,4 @@
         <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-        <HintPath>..\..\..\..\..\usr\local\share\dotnet\sdk\NuGetFallbackFolder\microsoft.identitymodel.tokens\5.2.0\lib\netstandard1.4\Microsoft.IdentityModel.Tokens.dll</HintPath>
-      </Reference>
-    </ItemGroup>
-
 </Project>
