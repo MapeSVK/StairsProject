@@ -79,8 +79,10 @@ namespace StairsAndShit.RestApi
 	        services.AddCors(options =>
 	        {
 		        options.AddPolicy("AllowSpecificOrigin",
-			        builder => builder.AllowAnyOrigin().AllowAnyHeader()
-				        .AllowAnyMethod());
+			        builder => builder.AllowAnyOrigin()
+				        .AllowAnyMethod()
+				        .AllowAnyHeader()
+				        .AllowCredentials());
 	        });
 	        
 	        /* Auto mapper class added */
@@ -127,7 +129,7 @@ namespace StairsAndShit.RestApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -148,13 +150,14 @@ namespace StairsAndShit.RestApi
 	            }
 	            app.UseHsts();
             }
+	        
+	        loggerFactory.AddConsole(_conf.GetSection("Logging"));
+	        loggerFactory.AddDebug();
 
 
 	        /* USAGE - Calling */
-
-            //app.UseHttpsRedirection();
             app.UseHttpsRedirection();
-
+	        app.UseAuthentication();
 	        app.UseCors("AllowSpecificOrigin");
             app.UseMvc();
         }
