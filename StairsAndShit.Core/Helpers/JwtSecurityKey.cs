@@ -1,7 +1,7 @@
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 
-namespace StairsAndShit.Core.Entity
+namespace StairsAndShit.Core.Helpers
 {
 	public class JwtSecurityKey
 	{
