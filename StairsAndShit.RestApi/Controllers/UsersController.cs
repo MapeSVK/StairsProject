@@ -33,6 +33,7 @@ namespace StairsAndShit.RestApi.Controllers
             var newUser = new User
             {
                 Username = model.Username,
+	            
                 PasswordHash = passwordHashnewUser,
                 PasswordSalt = passwordSaltnewUser,
                 IsAdmin = false
