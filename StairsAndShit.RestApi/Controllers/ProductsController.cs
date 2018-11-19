@@ -22,7 +22,7 @@ namespace StairsAndShit.RestApi.Controllers
 
 	    // GET api/products
 	    // get all filtered products with paging and ordered by name
-	    [Authorize]
+	    
         [HttpGet]
         public ActionResult<IEnumerable<Product>> Get([FromQuery] Filter filter)
         {
