@@ -60,7 +60,7 @@ namespace StairsAndShit.RestApi
             if (Environment.IsDevelopment())
             {
                 services.AddDbContext<StairsAppContext>(
-                    opt => opt.UseSqlite("Data Source=petShopDB.db"));
+                    opt => opt.UseSqlite("Data Source=stairsDB.db"));
             }
             else
             {
