@@ -101,6 +101,7 @@ namespace StairsAndShit.RestApi
                 {
                     var ctx = scope.ServiceProvider.GetService<StairsAppContext>();
                     ctx.Database.EnsureCreated();
+	                DBSeed.SeedDB(ctx);
                 }
                 app.UseHsts();
             }

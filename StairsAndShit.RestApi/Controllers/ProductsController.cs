@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StairsAndShit.Core.ApplicationService;
 using StairsAndShit.Core.Entity;
@@ -21,6 +22,7 @@ namespace StairsAndShit.RestApi.Controllers
 
 	    // GET api/products
 	    // get all filtered products with paging and ordered by name
+	    [Authorize]
         [HttpGet]
         public ActionResult<IEnumerable<Product>> Get([FromQuery] Filter filter)
         {
@@ -36,6 +38,7 @@ namespace StairsAndShit.RestApi.Controllers
 
         // GET api/products/5
 	    // get specific pet by id
+	    [Authorize]
 	    [HttpGet("{id}")]
 	    public ActionResult<Product> Get(int id)
 	    {
@@ -48,6 +51,8 @@ namespace StairsAndShit.RestApi.Controllers
 	    }
 
         // POST api/products
+	    [Authorize(Roles = "Administrator")]
+	    [HttpPost]
 	    public ActionResult<Product> Post([FromBody] Product newProduct)
 	    {
 		    if (string.IsNullOrEmpty(newProduct.Name))
@@ -67,6 +72,7 @@ namespace StairsAndShit.RestApi.Controllers
 	    }
 
         // PUT api/products/5
+	    [Authorize(Roles = "Administrator")]
 	    [HttpPut("{id}")]
 	    public ActionResult<Product> Put(int id, [FromBody] Product product)
 	    {
@@ -86,6 +92,7 @@ namespace StairsAndShit.RestApi.Controllers
         }
 
         // DELETE api/products/5
+	    [Authorize(Roles = "Administrator")]
 	    [HttpDelete("{id}")]
 	    public ActionResult<Product> Delete(int id)
 	    {

@@ -14,11 +14,11 @@ namespace StairsAndShit.RestApi.Controllers
 {
 	[Route("api/[controller]")]
     [ApiController]
-    public class TokensController: ControllerBase
+    public class LoginController: ControllerBase
     {
         private readonly IUserService<User> _userService;
 
-        public TokensController(IUserService<User> userService)
+        public LoginController(IUserService<User> userService)
         {
             _userService = userService;
         }
@@ -71,11 +71,11 @@ namespace StairsAndShit.RestApi.Controllers
                 new JwtHeader(new SigningCredentials(
                     JwtSecurityKey.Key, 
                     SecurityAlgorithms.HmacSha256)),
-                new JwtPayload(null, // issuer - not needed (ValidateIssuer = false)
-                    null, // audience - not needed (ValidateAudience = false)
+                new JwtPayload(null,
+                    null, 
                     claims.ToArray(), 
-                    DateTime.Now,               // notBefore
-                    DateTime.Now.AddMinutes(10)));  // expires
+                    DateTime.Now,        
+                    DateTime.Now.AddMinutes(10))); 
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }

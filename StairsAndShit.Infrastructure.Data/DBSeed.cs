@@ -10,15 +10,15 @@ namespace StairsAndShit.Infrastructure.Data
 			ctx.Database.EnsureCreated();
 
 			string password = "1112";
-			byte[] passwordHashJoe, passwordSaltJoe;
-			CreatePasswordHash(password, out passwordHashJoe, out passwordSaltJoe);
+			byte[] passwordHash, passwordSalt;
+			CreatePasswordHash(password, out passwordHash, out passwordSalt);
 
 
 			User userMichal = new User
 			{
 				Username = "michal",
-				PasswordHash = passwordHashJoe,
-				PasswordSalt = passwordSaltJoe,
+				PasswordHash = passwordHash,
+				PasswordSalt = passwordSalt,
 				IsAdmin = true
 			};
 
