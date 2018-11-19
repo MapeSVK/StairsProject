@@ -6,9 +6,6 @@ namespace StairsAndShit.Infrastructure.Data
 	{
 		public static void SeedDB(StairsAppContext ctx)
 		{
-			ctx.Database.EnsureDeleted();
-			ctx.Database.EnsureCreated();
-
 			string password = "1112";
 			byte[] passwordHash, passwordSalt;
 			CreatePasswordHash(password, out passwordHash, out passwordSalt);

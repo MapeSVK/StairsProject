@@ -92,6 +92,8 @@ namespace StairsAndShit.RestApi
                 using (var scope = app.ApplicationServices.CreateScope())
                 {
                     var ctx = scope.ServiceProvider.GetService<StairsAppContext>();
+	                ctx.Database.EnsureDeleted();
+	                ctx.Database.EnsureCreated();
 					DBSeed.SeedDB(ctx);
                 }
             }
