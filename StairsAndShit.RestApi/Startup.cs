@@ -54,8 +54,9 @@ namespace StairsAndShit.RestApi
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.AllowAnyOrigin().AllowAnyHeader()
-                        .AllowAnyMethod());
+	                builder => builder
+		                .WithOrigins("https://stairsprojectangular.firebaseapp.com").AllowAnyHeader().AllowAnyMethod()
+                );
             });
        
             if (Environment.IsDevelopment())
